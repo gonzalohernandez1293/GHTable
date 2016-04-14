@@ -1,0 +1,61 @@
+.GTable-Table-div{
+	position: relative;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+    display: inline-block;
+    border: 1px solid #EEE;
+    vertical-align: bottom;
+    text-align: center;
+}
+.GTable-Table-Scroll{
+	position: relative;
+	overflow: auto;
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: 100%;	
+}
+
+.GTable-Table {
+    font-family: arial, helvetica;
+    font-size: 10pt;
+    cursor: default;
+    margin: 0px;
+    background: #FFF none repeat scroll 0% 0%;
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+.GTable-Table th,
+.GTable-Table td {
+    border-style: solid;
+    border-color: #EEE;
+    -moz-border-top-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    border-image: none;
+    border-width: 0px 1px 1px 0px;
+    padding: 2px 0.35em;
+}
+.GTable-Table thead tr th {
+    background: transparent linear-gradient(to bottom, #0079C1 0%, #00529B 100%) repeat scroll 0% 0% !important;
+    color: #FFF !important;
+    font-weight: 101;
+    position: relative;
+    z-index: 10;
+}
+.GTable-Table tbody tr:nth-child(even) {
+    color: #003F8C;
+    background: transparent linear-gradient(to top, #FFF, #F3F7FA) repeat scroll 0% 0%;
+}
+.GTable-Table tbody tr:nth-child(odd) {
+    color: #0073C9;
+    background: transparent linear-gradient(to bottom, #FFF, #F3F7FA) repeat scroll 0% 0%;
+}
+.GTable-Table tbody > tr:hover {
+    background: #E0F6FC !important;
+    cursor: pointer;
+}
