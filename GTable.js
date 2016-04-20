@@ -22,13 +22,18 @@
 
   /* Añadir array de datos asociativo */
   public.addDataAsoc = function(datos,filtro,evento) {
-    var max = datos.length;
     var fila;
+    if(filtro != null || filtro != undefined){
+     datos =datos.filter(filtro);     
+     if(datos.length <= 0)
+        return;
+     }
+     var max = datos.length;
     for (i = 0; i < max; i++) {
-      if(filtro != null || filtro != undefined){
+     /* if(filtro != null || filtro != undefined){
          if(!filtro(datos[i]))
           continue;         
-      }
+      }*/
       fila = $('<tr data-id='+datos[i][INDICE]+' data-id-en-tabla='+i+'></tr>').appendTo($(TABLA).find('tbody'));              
       for (var j in HEADER) {        
         fila.append('<td>' + datos[i][j] + '</td>');        
@@ -43,8 +48,6 @@
      public.addDataAsoc(datos,filtro,evento);
      
   }
-  
-
   
   /*Vaciar Tabla*/
   public.emptyTable = function(){
@@ -73,8 +76,4 @@
     return public;
   } 
   
-
-  
-
-
 }(jQuery));

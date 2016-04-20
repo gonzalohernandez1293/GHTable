@@ -1,7 +1,8 @@
 .GTable-Table-div{
 	position: relative;
 	max-width: 100%;
-	max-height: 100%;
+	/* max-height: 100%; */
+	max-height: inherit;
 	width: 100%;
 	height: 100%;
 	box-sizing: border-box;
@@ -15,7 +16,8 @@
 	overflow-y: auto;
     overflow-x: hidden;
 	max-width: 100%;
-	max-height: 100%;
+	/* max-height: 100%; */
+	max-height: inherit;
 	width: 100%;
 	height: 100%;	
 }
