@@ -54,7 +54,11 @@
      $(TABLA).find('thead').html("");
      $(TABLA).find('tbody').html("");
      return;
-  }  
+  }
+
+  public.getTable = function() {
+  return TABLA;
+  }
   
   /* Constructor */
   $.fn.GTable = function(idTabla) {
@@ -74,6 +78,13 @@
       });
     IDTABLA=idTabla;
     return public;
+            return this.each(function () {
+            if (!$.data(this, 'plugin_GTable')) {
+                $.data(this, 'plugin_GTable',
+                new Plugin( this, idTabla ));
+            }
+        }); 
+ 
   } 
   
 }(jQuery));
