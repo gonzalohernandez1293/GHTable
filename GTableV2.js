@@ -83,27 +83,24 @@
             }
             if (evento != null)
                fila.dblclick(evento);
-         }
-		 var funcionOrdenacion = function(property){
-		var sortOrder = 1;
-		if(property[0] === "-") {
-			sortOrder = -1;
-			property = property.substr(1);
-		}
-		return function (a,b) {
-			var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-			return result * sortOrder;
-		}
-	  };
-		 var dataEvent= [this.variables.datos,funcionOrdenacion];
-		 this.find('thead tr th').bind('click',dataEvent,function (e){ //Ordenable
-		   	console.log(e.dataEvent[0]);
-			(e.dataEvent[0]).sort(e.dataEvent[1].methods.addDataAsoc($(this).attr('data-name')));
-			console.log(e.dataEvent[0]);
+         } 
+		 this.find('thead > tr > th').unbind('click.GTable').bind('click.GTable',this,function (e){ //Ordenable		    
+			var tabla= e.data;
+			var arrayDatos= e.data.variables.datos;
+			//console.log("Ordenando por: "+$(this).attr('data-name')+"  Ord: "+$(this).attr('data-ord'));
+			arrayDatos.sort(tabla.GTable('sortTable',$(this).attr('data-name')));
+			if($(this).attr('data-ord') == 1){
+				arrayDatos.reverse();
+				$(this).removeAttr('data-ord');
+			}else{				
+				$(this).attr('data-ord',1);
+			}
+			tabla.GTable('refreshTable',arrayDatos);
 		 });
          return this;
       },
-	  sortTable: function(property){
+	  sortTable: function(property){ 
+		  
 		var sortOrder = 1;
 		if(property[0] === "-") {
 			sortOrder = -1;
