@@ -87,15 +87,35 @@
 		 this.find('thead > tr > th').unbind('click.GTable').bind('click.GTable',this,function (e){ //Ordenable		    
 			var tabla= e.data;
 			var arrayDatos= e.data.variables.datos;
-			//console.log("Ordenando por: "+$(this).attr('data-name')+"  Ord: "+$(this).attr('data-ord'));
-			arrayDatos.sort(tabla.GTable('sortTable',$(this).attr('data-name')));
-			if($(this).attr('data-ord') == 1){
-				arrayDatos.reverse();
-				$(this).removeAttr('data-ord');
-			}else{				
-				$(this).attr('data-ord',1);
+			
+			arrayDatos.sort(tabla.GTable('sortTable',$(this).attr('data-name'))); //Ordenar los datos (ascendente)
+			var encontradoPrimero= tabla.find('thead > tr > th > span.ui-icon-triangle-1-s');
+			var encontradoSegundo= tabla.find('thead > tr > th > span.ui-icon-triangle-1-n');
+			if(encontradoPrimero){
+				//Ya estaba ordenado, ver si es la misma columna
+				if(encontradoPrimero == $(this)){ //misma columna, cambiar orden
+					$(this).find('span').removeClass('ui-icon-triangle-1-s').addClass('ui-icon-triangle-1-n');
+					arrayDatos.reverse();
+				}else{ //es otra columna, primer orden
+					encontradoPrimero.removeClass('ui-icon-triangle-1-s');
+					$(this).find('span').addClass('ui-icon-triangle-1-s');
+				}
+			}else if(encontradoSegundo){
+				if(encontradoSegundo == $(this)){ //misma columna, cambiar orden
+					$(this).find('span').removeClass('ui-icon-triangle-1-n').addClass('ui-icon-triangle-1-s');					
+				}else{ //es otra columna, primer orden
+					encontradoPrimero.removeClass('ui-icon-triangle-1-n');
+					$(this).find('span').addClass('ui-icon-triangle-1-s');
+				}
+				
+			}else{ //No se ha encontrado nada
+				$(this).find('span').addClass('ui-icon-triangle-1-s');
 			}
+			
 			tabla.GTable('refreshTable',arrayDatos);
+			return;
+			//ui-icon-triangle-1-s -> primero
+			//ui-icon-triangle-1-n -> Segundo
 		 });
          return this;
       },
@@ -117,7 +137,7 @@
             cabecera = this.variables.header;
          var fila = $('<tr></tr>').appendTo(this.find('thead'));
          for (var i in cabecera) {
-            fila.append('<th data-name="'+i+'">' + cabecera[i] + '</th>');
+            fila.append('<th data-name="'+i+'"><span>' + cabecera[i] + '</span></th>');
          }
          return this;
       },

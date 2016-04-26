@@ -72,10 +72,12 @@
     cursor: pointer;
 }
 
-.GTableCellnumber,
 .GTableCellboolean{
-text-align: center;
+   text-align: center;
+}
+.GTableCellnumber{
+   text-align: right;
 }
 .GTableCellboolean{
-color: #0073C9;
+   color: #0073C9;
 }
