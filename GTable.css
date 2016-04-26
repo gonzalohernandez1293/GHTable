@@ -9,7 +9,7 @@
     display: inline-block;
    /* border: 1px solid #EEE;*/
     vertical-align: bottom;
-    text-align: center;
+   /* text-align: center;*/
 }
 .GTable-Table-Scroll{
 	position: relative;
@@ -57,6 +57,7 @@
     font-weight: 101;
     position: relative;
     z-index: 10;
+	text-align: left;
 }
 .GTable-Table tbody tr:nth-child(even) {
     color: #003F8C;
@@ -69,4 +70,12 @@
 .GTable-Table tbody > tr:hover {
     background: #E0F6FC !important;
     cursor: pointer;
+}
+
+.GTableCellnumber,
+.GTableCellboolean{
+text-align: center;
+}
+.GTableCellboolean{
+color: #0073C9;
 }
