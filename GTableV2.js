@@ -87,8 +87,9 @@
 		 var funcionOrdenacion = methods.sortTable;
 		 var dataEvent= [this.variables.datos,funcionOrdenacion];
 		 this.find('thead tr th').bind('click',dataEvent,function (e){ //Ordenable
-		    $(this).attr('data-name')
-			console.log(e.data);
+		   	console.log(e.dataEvent[0]);
+			(e.dataEvent[0]).sort(e.dataEvent[1].methods.addDataAsoc($(this).attr('data-name')));
+			console.log(e.dataEvent[0]);
 		 });
          return this;
       },
