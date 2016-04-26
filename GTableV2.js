@@ -88,7 +88,7 @@
 		 var dataEvent= [this.variables.datos,funcionOrdenacion];
 		 this.find('thead tr th').bind('click',dataEvent,function (e){ //Ordenable
 		    $(this).attr('data-name')
-			console.log(e);
+			console.log(e.data);
 		 });
          return this;
       },
